@@ -1,0 +1,296 @@
+.manager-form-bg {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 24px;
+  box-sizing: border-box;
+}
+
+.manager-form-main {
+  background: #F9FAFB;
+  border-radius: 8px;
+  padding: 24px 20px;
+  width: 100%;
+  max-width: 1600px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-sizing: border-box;
+}
+
+.manager-top-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 48px;
+  width: 100%;
+}
+
+.manager-left-form {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.manager-form-label {
+  font-weight: 700;
+  font-size: 1.18rem;
+  margin-bottom: 18px;
+  color: #232323;
+}
+
+.manager-form-sub-label {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #232323;
+}
+
+.mt-28 {
+  margin-top: 28px;
+}
+
+.manager-radio-row {
+  display: flex;
+  gap: 38px;
+  margin-bottom: 10px;
+}
+
+.radio-label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #6c7a89;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.radio-label input[type="radio"] {
+  accent-color: #29b6f6;
+  margin-right: 5px;
+}
+
+.radio-label.active {
+  color: #232323;
+}
+
+.required {
+  color: #e53935;
+  font-weight: bold;
+}
+
+.manager-input {
+  padding: 14px 16px;
+  border: 1.5px solid #dde1e7;
+  border-radius: 7px;
+  font-size: 1.08rem;
+  background: #fff;
+  transition: border-color 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.manager-section-label {
+  font-weight: 700;
+  font-size: 1.07rem;
+  margin-bottom: 18px;
+  margin-top: 22px;
+  color: #232323;
+}
+
+.manager-row {
+  display: flex;
+  gap: 28px;
+  margin-bottom: 12px;
+}
+
+.manager-col-3 {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.manager-col-2 {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.manager-col-1 {
+  flex: 3 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.manager-textarea {
+  min-height: 60px;
+  max-width: 100%;
+  font-size: 1rem;
+  padding: 12px;
+  resize: vertical;
+  border-radius: 7px;
+  margin-top: 2px;
+}
+
+.manager-table-wrap {
+  margin-top: 22px;
+  overflow-x: auto;
+}
+.manager-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 2px;
+}
+.manager-table th,
+.manager-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 1rem;
+  text-align: left;
+  background: #fff;
+}
+.manager-table th {
+  background: #f5f7fa;
+  font-weight: 600;
+  color: #222;
+}
+.manager-table td {
+  color: #333;
+}
+
+/* --- Attachment Area --- */
+.manager-attachment-row {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  margin-top: 12px;
+}
+.manager-attach-chip {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 8px rgba(33,132,198,0.08);
+  padding: 12px 16px;
+  border: 1.5px dashed #dde1e7;
+  min-width: 260px;
+  position: relative;
+}
+.manager-attach-pdf-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.manager-attach-chip-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.manager-attach-file {
+  font-weight: 700;
+  color: #232323;
+}
+.manager-attach-date {
+  font-size: 0.97rem;
+  color: #6c7a89;
+}
+.manager-attach-chip-download {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 20px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.manager-download-icon {
+  width: 28px;
+  height: 28px;
+}
+
+/* --- Action Buttons --- */
+.manager-submit-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 32px;
+}
+.manager-reject-btn {
+  background: #fff;
+  border: 1.5px solid #29b6f6;
+  color: #29b6f6;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 12px 44px;
+  font-size: 1.13rem;
+  cursor: pointer;
+  box-shadow: none;
+  min-width: 120px;
+  text-align: center;
+  transition: background 0.14s, color 0.14s, border-color 0.14s;
+}
+.manager-reject-btn:hover {
+  background: #e3f2fd;
+  color: #0077c5;
+  border-color: #0077c5;
+}
+.manager-approve-btn {
+  background: #29b6f6;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 12px 44px;
+  font-size: 1.13rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: none;
+  min-width: 120px;
+  text-align: center;
+  transition: background 0.14s;
+}
+.manager-approve-btn:hover {
+  background: #0077c5;
+}
+
+/* --- Transfer Workflow --- */
+.manager-transfer-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 32px;
+  background: #f4f7fe;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #616FE3;
+  font-size: 1.12rem;
+}
+.manager-transfer-icon {
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+}
+.manager-transfer-label {
+  font-weight: 700;
+  color: #616FE3;
+  font-size: 1.13rem;
+}
+.manager-transfer-arrow {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
