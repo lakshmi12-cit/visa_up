@@ -27,31 +27,29 @@ const Reportee = () => {
     <div className="reportee-form-bg">
       <form className="reportee-form-main">
         {/* Initiation Type */}
-        <div className="reportee-top-row">
-          <div className="reportee-form-label">Initiation Type</div>
-          <div className="reportee-radio-row">
-            <label
-              className={`radio-label ${form.initiationType === "me" ? "active" : ""}`}
-            >
-              <input
-                type="radio"
-                checked={form.initiationType === "me"}
-                readOnly
-              />{" "}
-              For Me
-            </label>
-            <label
-              className={`radio-label ${form.initiationType === "reporte" ? "active" : ""}`}
-            >
-              <input
-                type="radio"
-                checked={form.initiationType === "reporte"}
-                readOnly
-              />{" "}
-              For My Reportee
-            </label>
-          </div>
-        </div>
+        <div className="reportee-section-label" style={{marginBottom: 8}}>Initiation Type</div>
+<div className="reportee-radio-row" style={{marginBottom: 24, gap: 28, display: 'flex', alignItems: 'center'}}>
+  <label className="reportee-radio-label">
+    <input
+      type="radio"
+      checked={form.initiationType === "me"}
+      disabled
+      className="reportee-radio-input"
+    />
+    <span className="reportee-radio-custom" />
+    <span className="reportee-radio-text">For Me</span>
+  </label>
+  <label className="reportee-radio-label">
+    <input
+      type="radio"
+      checked={form.initiationType === "reporte"}
+      disabled
+      className="reportee-radio-input"
+    />
+    <span className="reportee-radio-custom" />
+    <span className="reportee-radio-text">For My Reportee</span>
+  </label>
+</div>
         {/* Employee Info (only for Reportee) */}
         {form.employeeInfo && (
           <>
