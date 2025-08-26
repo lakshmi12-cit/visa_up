@@ -50,17 +50,29 @@ const TeamHead = () => {
       <form className="team-head-form-main">
 
         {/* Initiation Type */}
-        <div className="team-head-top-row">
-          <div className="team-head-form-label">Initiation Type</div>
-          <div className="team-head-radio-row">
-            <label className={`radio-label ${initiationType === "me" ? "active" : ""}`}>
-              <input type="radio" checked={initiationType === "me"} disabled /> For Me
-            </label>
-            <label className={`radio-label ${initiationType === "reporte" ? "active" : ""}`}>
-              <input type="radio" checked={initiationType === "reporte"} disabled /> For My Reportee
-            </label>
-          </div>
-        </div>
+       <div className="team-head-section-label" style={{marginBottom: 8}}>Initiation Type</div>
+<div className="team-head-radio-row" style={{marginBottom: 24, gap: 28, display: 'flex', alignItems: 'center'}}>
+  <label className="team-head-radio-label">
+    <input
+      type="radio"
+      checked={initiationType === "me"}
+      disabled
+      className="team-head-radio-input"
+    />
+    <span className="team-head-radio-custom" />
+    <span className="team-head-radio-text">For Me</span>
+  </label>
+  <label className="team-head-radio-label">
+    <input
+      type="radio"
+      checked={initiationType === "reporte"}
+      disabled
+      className="team-head-radio-input"
+    />
+    <span className="team-head-radio-custom" />
+    <span className="team-head-radio-text">For My Reportee</span>
+  </label>
+</div>
 
         {/* Employee Info */}
         <div className="team-head-section-label">Employee Information</div>
