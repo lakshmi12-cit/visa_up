@@ -1,4 +1,3 @@
-// Header.jsx
 import React, { useState } from "react";
 import {
   Box,
@@ -20,13 +19,14 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 
-// === your assets ===
 import nestIcon from "../assets/nesticon.svg";
 import editIcon from "../assets/edit.svg";
 import keyIcon from "../assets/key.svg";
 import saveIcon from "../assets/save.svg";
 import squareIcon from "../assets/square.svg";
-import userPhoto from "../assets/man-438081_960_720.svg"; // change extension if it's png/jpg
+import userPhoto from "../assets/man-438081_960_720.svg";
+
+import "../style/Header.css";
 
 const Header = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -40,110 +40,51 @@ const Header = () => {
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "6px 12px",
-        background: "white",
-        borderBottom: "1px solid #e5e7eb",
-        position: "sticky",
-        top: 0,
-        zIndex: 1000,
-      }}
-    >
+    <Box className="header-container">
       {/* Left Section */}
-      <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-        {/* App logo + name */}
-        <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
-          <Box component="img" src={nestIcon} alt="Nest" sx={{ width: 20, height: 20 }} />
-          <Typography sx={{ fontSize: "18px", fontWeight: 400, color: "##111827", lineHeight: 1.2 }}>
-            Nest
-          </Typography>
+      <Box className="header-left">
+        <Box className="header-logo-container">
+          <Box component="img" src={nestIcon} alt="Nest" className="header-logo" />
+          <Typography className="header-title">Nest</Typography>
         </Box>
 
-        {/* Toggle Tabs */}
-        <ToggleButtonGroup
-          value={tab}
-          exclusive
-          onChange={(e, v) => v && setTab(v)}
-          sx={{
-            borderRadius: "50px",
-            overflow: "hidden",
-            bgcolor: "#e5e7eb",
-            ml: 1.5,
-            "& .MuiToggleButton-root": {
-              textTransform: "none",
-              fontSize: "14px",
-              fontWeight: 500,
-              px: 2.5,
-              py: 0.6,
-              border: "none",
-              borderRadius: "50px !important",
-              color: "#374151",
-              flex: 1,
-              whiteSpace: "nowrap",
-            },
-            "& .Mui-selected": {
-              backgroundColor: "#0ea5e9 !important",
-              color: "white !important",
-            },
-          }}
-        >
-          <ToggleButton value="workspace">My Workspace</ToggleButton>
-          <ToggleButton value="manager">Manager Hub</ToggleButton>
-        </ToggleButtonGroup>
+        <Box className="header-toggle-container">
+          <Box 
+            className={`header-toggle-btn ${tab === 'workspace' ? 'active' : ''}`}
+            onClick={() => setTab('workspace')}
+          >
+            My Workspace
+          </Box>
+          <Box 
+            className={`header-toggle-btn ${tab === 'manager' ? 'active' : ''}`}
+            onClick={() => setTab('manager')}
+          >
+            Manager Hub
+          </Box>
+        </Box>
       </Box>
 
       {/* Right Section */}
-      <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+      <Box className="header-right">
         {/* Search Box */}
-        <Box sx={{ position: "relative", width: 220 }}>
-          <SearchIcon
-            sx={{
-              position: "absolute",
-              left: 12,
-              top: "50%",
-              transform: "translateY(-50%)",
-              color: "#6b7280",
-              fontSize: 20,
-            }}
-          />
+        <Box className="header-search-container">
+          <SearchIcon className="header-search-icon" />
           <InputBase
             placeholder="search…"
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
-            sx={{
-              p: "8px 12px 8px 40px",
-              borderBottom: "1px solid #e5e7eb",
-              width: "100%",
-              fontSize: "14px",
-            }}
+            className="header-search-input"
           />
         </Box>
 
-        {/* Calendar with green tick */}
-        <Box sx={{ position: "relative", display: "flex", alignItems: "center" }}>
+        {/* Calendar */}
+        <Box className="header-calendar">
           <IconButton
-            sx={{ color: "#6b7280", p: "4px", position: "relative" }}
+            className="header-calendar-btn"
             onClick={() => setShowDatePicker(!showDatePicker)}
           >
-            <CalendarMonthOutlinedIcon sx={{ fontSize: 28, color: "gray" }} />
-            <Box
-              sx={{
-                position: "absolute",
-                top: 6,
-                right: 6,
-                width: 14,
-                height: 14,
-                borderRadius: "50%",
-                backgroundColor: "#10b981",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
+            <CalendarMonthOutlinedIcon className="header-calendar-icon" />
+            <Box className="header-calendar-tick">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="10"
@@ -161,29 +102,20 @@ const Header = () => {
           </IconButton>
 
           {selectedDate && (
-            <Typography sx={{ ml: "6px", fontSize: "12px", color: "#6b7280" }}>
+            <Typography className="header-date-text">
               {dayjs(selectedDate).format("DD-MMM-YYYY")}
             </Typography>
           )}
 
           {showDatePicker && (
-            <Box
-              sx={{
-                position: "absolute",
-                top: "100%",
-                left: 0,
-                zIndex: 1000,
-                mt: "8px",
-                backgroundColor: "white",
-                borderRadius: "8px",
-                boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-              }}
-            >
+            <Box className="header-datepicker">
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
                   value={selectedDate}
                   onChange={handleDateChange}
-                  slotProps={{ textField: { size: "small", style: { display: "none" } } }}
+                  slotProps={{
+                    textField: { size: "small", className: "hidden-input" },
+                  }}
                   open
                   onClose={() => setShowDatePicker(false)}
                 />
@@ -192,54 +124,31 @@ const Header = () => {
           )}
         </Box>
 
-        {/* Your asset icons */}
-        <IconButton sx={{ p: 0.5 }}>
-          <Box component="img" src={editIcon} alt="Edit" sx={{ width: 22, height: 22 }} />
-        </IconButton>
-        <IconButton sx={{ p: 0.5 }}>
-          <Box component="img" src={keyIcon} alt="Key" sx={{ width: 22, height: 22 }} />
-        </IconButton>
-        <IconButton sx={{ p: 0.5 }}>
-          <Box component="img" src={saveIcon} alt="Save" sx={{ width: 22, height: 22 }} />
-        </IconButton>
-        <IconButton sx={{ p: 0.5 }}>
-          <Box component="img" src={squareIcon} alt="Apps" sx={{ width: 22, height: 22 }} />
-        </IconButton>
+        {/* Asset Icons */}
+        {[editIcon, keyIcon, saveIcon, squareIcon].map((icon, i) => (
+          <IconButton key={i} className="header-icon-btn">
+            <Box component="img" src={icon} alt={`icon-${i}`} className="header-icon-img" />
+          </IconButton>
+        ))}
 
-        {/* Notifications with red badge */}
-        <IconButton sx={{ color: "#6b7280", position: "relative" }}>
+        {/* Notifications */}
+        <IconButton className="header-notification-btn">
           <Badge
             badgeContent={6}
             color="error"
             anchorOrigin={{ vertical: "top", horizontal: "right" }}
-            sx={{
-              "& .MuiBadge-badge": {
-                fontSize: "0.65rem",
-                height: 16,
-                minWidth: 16,
-                top: 4,
-                right: 4,
-              },
-            }}
+            className="header-notification-badge"
           >
             <NotificationsIcon />
           </Badge>
         </IconButton>
 
         {/* Profile */}
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: 1.5,
-            pl: 1.5,
-            borderLeft: "1px solid #e5e7eb",
-          }}
-        >
-          <Avatar sx={{ width: 32, height: 32 }} src={userPhoto} />
-          <Box sx={{ display: "flex", flexDirection: "column" }}>
-            <Typography sx={{ fontSize: "14px", fontWeight: 500 }}>Isha Kumar</Typography>
-            <Typography sx={{ fontSize: "12px", color: "#6b7280" }}>Sr. Developer</Typography>
+        <Box className="header-profile">
+          <Avatar src={userPhoto} className="header-avatar" />
+          <Box className="header-profile-info">
+            <Typography className="header-profile-name">Isha Kumar</Typography>
+            <Typography className="header-profile-role">Sr. Developer</Typography>
           </Box>
         </Box>
       </Box>
