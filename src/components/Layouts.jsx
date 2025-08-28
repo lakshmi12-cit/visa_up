@@ -6,6 +6,7 @@ import { ReactComponent as ArrowForwardIcon } from '../assets/arrow_forward.svg'
 import { ReactComponent as AccessAlarmsIcon } from '../assets/access_alarms.svg';
 import AvtharImage from '../assets/avthar.svg';
 import { ReactComponent as RequiredInfoIcon } from '../assets/Required_info.svg';
+import "../style/Layouts.css";
 
 const Layout = ({
   children,
@@ -24,182 +25,102 @@ const Layout = ({
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh', bgcolor: '#ffffff' }}>
+    <Box className="layout-container">
       <Header />
-      <Box sx={{ flex: 1, bgcolor: '#ffffff', p: { xs: 1, md: 3 } }}>
-        <Typography sx={{ color: '#6B7280', fontSize: 13, mb: 1 }}>
+      <Box className="layout-content">
+        <Typography className="layout-breadcrumb">
           My Workspace {'>'} Invitation & Visa Processing
         </Typography>
-        <Box sx={{ bgcolor: 'white', borderRadius: 2, p: 3, mb: 3, boxShadow: '0 1px 2px rgba(16,30,115,0.04)' }}>
-          {/* Title row with arrow and subtitle (all inline) */}
-          <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+        <Box className="layout-card">
+          {/* Title row */}
+          <Box className="layout-title-row">
             {showBackButton && (
               <Box
-                sx={{ mr: 1, cursor: 'pointer', display: 'flex', alignItems: 'center' }}
-                onClick={onBackClick}
                 className="layout-back-button"
+                onClick={onBackClick}
               >
-                <ArrowForwardIcon style={{ width: 24, height: 24 }} />
+                <ArrowForwardIcon className="layout-back-icon" />
               </Box>
             )}
-            <Typography
-              sx={{
-                fontWeight: 700,
-                fontSize: 22,
-                color: '#111827',
-                display: 'flex',
-                alignItems: 'center',
-              }}
-              className="layout-title"
-            >
+            <Typography className="layout-title">
               {title}
               {subtitle && (
-                <span
-                  className="layout-subtitle"
-                  style={{
-                    fontWeight: 400,
-                    fontSize: 18,
-                    color: '#6B7280',
-                    marginLeft: 8,
-                  }}
-                >
+                <span className="layout-subtitle">
                   - ({subtitle})
                 </span>
               )}
             </Typography>
-            <Box
-              sx={{
-                marginLeft: 'auto',
-                display: 'flex',
-                alignItems: 'center',
-              }}
-              className="layout-clock-container"
-            >
-              <AccessAlarmsIcon style={{ width: 26, height: 26, color: '#00b0ff' }} />
+            <Box className="layout-clock-container">
+              <AccessAlarmsIcon className="layout-clock-icon" />
             </Box>
           </Box>
-          {/* Employee Details Section */}
-          <Box sx={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 1,
-            pb: 0
-          }}>
-            {/* Employee Profile */}
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, minWidth: 280 }}>
-              <Box sx={{ position: 'relative' }}>
-                <Box sx={{
-                  width: 48,
-                  height: 48,
-                  borderRadius: '50%',
-                  overflow: 'hidden',
-                  border: '1px solid #E5E7EB',
-                  bgcolor: '#4CAF50'
-                }}>
+
+          {/* Employee Details */}
+          <Box className="layout-employee-section">
+            <Box className="layout-employee-profile">
+              <Box className="layout-avatar-container">
+                <Box className="layout-avatar-bg">
                   <Box
                     component="img"
                     src={AvtharImage}
                     alt={employeeData.name}
-                    sx={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover'
-                    }}
+                    className="layout-avatar-img"
                   />
                 </Box>
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    bottom: 2,
-                    right: 2,
-                    width: 12,
-                    height: 12,
-                    backgroundColor: '#eaf5ebff',
-                    borderRadius: '50%',
-                    border: '2px solid white',
-                  }}
-                />
+                <Box className="layout-avatar-status" />
               </Box>
               <Box>
-                <Typography sx={{ fontWeight: 700, fontSize: 16, color: '#111827' }}>
+                <Typography className="layout-employee-name">
                   {employeeData.name} - Gen ID: {employeeData.genId}
                 </Typography>
-                <Typography sx={{ fontSize: 14, color: '#6B7280' }}>{employeeData.email}</Typography>
+                <Typography className="layout-employee-email">
+                  {employeeData.email}
+                </Typography>
               </Box>
             </Box>
-            {/* Vertical Divider */}
-            <Box sx={{
-              mx: 2,
-              alignSelf: 'stretch',
-              minHeight: 44,
-              height: '44px',
-              display: { xs: 'none', sm: 'block' }
-            }}>
-              <Box sx={{
-                width: '1px',
-                height: '100%',
-                bgcolor: '#e3e8ee',
-                marginTop: '4px'
-              }} />
+
+            <Box className="layout-divider" />
+
+            <Box className="layout-employee-info">
+              <Typography className="layout-label">Designation</Typography>
+              <Typography className="layout-value">
+                {employeeData.designation}
+              </Typography>
             </Box>
-            {/* Designation */}
-            <Box sx={{ minWidth: 120, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <Typography sx={{ fontSize: 14, color: '#6B7280', mb: 0.5 }}>Designation</Typography>
-              <Typography sx={{ fontWeight: 700, fontSize: 16, color: '#111827' }}>{employeeData.designation}</Typography>
+
+            <Box className="layout-divider" />
+
+            <Box className="layout-employee-info layout-division">
+              <Typography className="layout-label">Division</Typography>
+              <Typography className="layout-value">
+                {employeeData.division}
+              </Typography>
             </Box>
-            {/* Vertical Divider */}
-            <Box sx={{
-              mx: 2,
-              alignSelf: 'stretch',
-              minHeight: 44,
-              height: '44px',
-              display: { xs: 'none', sm: 'block' }
-            }}>
-              <Box sx={{
-                width: '1px',
-                height: '100%',
-                bgcolor: '#e3e8ee',
-                marginTop: '4px'
-              }} />
-            </Box>
-            {/* Division */}
-            <Box sx={{ minWidth: 300, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <Typography sx={{ fontSize: 14, color: '#6B7280', mb: 0.5 }}>Division</Typography>
-              <Typography sx={{ fontWeight: 700, fontSize: 16, color: '#111827' }}>{employeeData.division}</Typography>
-            </Box>
-            {/* Vertical Divider */}
-            <Box sx={{
-              mx: 2,
-              alignSelf: 'stretch',
-              minHeight: 44,
-              height: '44px',
-              display: { xs: 'none', sm: 'block' }
-            }}>
-              <Box sx={{
-                width: '1px',
-                height: '100%',
-                bgcolor: '#e3e8ee',
-                marginTop: '4px'
-              }} />
-            </Box>
-            {/* Manager */}
-            <Box sx={{ minWidth: 200, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <Typography sx={{ fontSize: 14, color: '#6B7280', mb: 0.5 }}>Manager</Typography>
-              <Typography sx={{ fontWeight: 700, fontSize: 16, color: '#111827' }}>{employeeData.manager}</Typography>
+
+            <Box className="layout-divider" />
+
+            <Box className="layout-employee-info">
+              <Typography className="layout-label">Manager</Typography>
+              <Typography className="layout-value">
+                {employeeData.manager}
+              </Typography>
             </Box>
           </Box>
         </Box>
-        {/* Required Information Section */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-          <RequiredInfoIcon style={{ width: 24, height: 24 }} />
-          <Typography sx={{ fontWeight: 700, fontSize: 18, color: '#110f0fff' }}>
+
+        {/* Required Information */}
+        <Box className="layout-required-section">
+          <RequiredInfoIcon className="layout-required-icon" />
+          <Typography className="layout-required-title">
             Required Information
           </Typography>
         </Box>
+
         {children}
-        <Box sx={{ mt: 1 }}>
-          <Link href="#" underline="hover" sx={{ display: 'flex', alignItems: 'center', gap: 1, color: '#6B7280' }}>
-            <ViewPoliciesIcon style={{ width: 20, height: 20 }} />
+
+        <Box className="layout-view-policies">
+          <Link href="#" underline="hover" className="layout-policies-link">
+            <ViewPoliciesIcon className="layout-policies-icon" />
             View Policies
           </Link>
         </Box>
