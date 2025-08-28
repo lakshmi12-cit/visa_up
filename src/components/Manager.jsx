@@ -387,7 +387,7 @@ const Manager = () => {
           maxLength={500}
           value={comment}
           disabled
-          className="manager-input manager-textarea"
+          className="manager-input manager-comment-textarea"
         />
         <div className="manager-submit-row">
           <button
@@ -419,7 +419,7 @@ const Manager = () => {
             <svg width="22" height="22" fill="none" viewBox="0 0 22 22">
               <path
                 d="M8 6l6 5-6 5"
-                stroke="#616FE3"
+                stroke="#000000ff"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
