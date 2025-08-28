@@ -61,23 +61,77 @@
   margin-bottom: 10px;
 }
 
+.employee-radio-row {
+  display: flex;
+  gap: 38px;
+  margin-bottom: 10px;
+}
+
 .radio-label {
+  position: relative;
+  padding-left: 36px; /* space for custom radio */
   font-weight: 600;
   font-size: 1rem;
-  color: #6c7a89;
-  display: flex;
+  color: #6B7280;
+  cursor: pointer;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
 }
 
 .radio-label input[type="radio"] {
-  accent-color: #29b6f6;
-  margin-right: 5px;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.radio-label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  border: 2px solid #D1D5DB;
+  border-radius: 50%;
+  background-color: #ffffff;
+  transition: all 0.2s ease-in-out;
+}
+
+.radio-label.active::before {
+  border-color: #29b6f6;
+}
+.radio-label::after {
+  content: "";
+  position: absolute;
+  left: 5px;  /* Change from 6px to 2px */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background-color: #29b6f6;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  
+}
+
+
+.radio-label.active::after {
+  opacity: 1;
 }
 
 .radio-label.active {
-  color: #232323;
+  font-weight: 700;
+  color: #111827;
 }
+
 
 .required {
   color: #e53935;
@@ -85,16 +139,47 @@
 }
 
 .employee-input {
-  padding: 14px 16px;
-  border: 1.5px solid #dde1e7;
-  border-radius: 7px;
-  font-size: 1.08rem;
-  background: #fff;
-  transition: border-color 0.2s;
-  width: 100%;
-  box-sizing: border-box;
-  margin-bottom: 20px;
+  /* Input Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 16px;
+gap: 12px;
+
+/*width: 435px;*/
+height: 48px;
+
+background: #ffffff;
+border: 1px solid #D0D5DD;
+border-radius: 6px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
 }
+.employee-input .MuiPickersInputBase-root {
+  height: 8px !important;
+  min-height: 48px !important;
+  display: flex;
+  align-items: center;
+ /* test if color changes */
+}
+
+.employee-input .MuiOutlinedInput-input {
+  height: 48px !important;
+  padding: 0 12px !important;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
 
 .employee-note-box-inline {
   position: relative;
@@ -105,16 +190,30 @@
   width: 420px;
   font-size: 1rem;
   color: #333;
-  margin-top: 78px;
+  margin-top: 50px;
   flex-shrink: 0;
 }
 
 .note-icon-topright {
   position: absolute;
-  top: 14px;
-  right: 18px;
-  width: 22px;
-  height: 22px;
+  top: -100px;
+  right: 2px;
+  width: 30px;
+  height: 160px;
+}
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.close-button img {
+  height: 16px;
+  width: 16px;
 }
 
 .employee-initiate-for-row {
@@ -190,10 +289,10 @@
   background: #fff;
   border: 2px solid #29b6f6;
   border-radius: 8px;
-  padding: 10px 16px;
+  padding: 2px 16px;
   gap: 10px;
   cursor: pointer;
-  width: 58px;       /* <--- important */
+  width: 50px;       /* <--- important */
   min-width: 160px;  /* <--- override */
   box-shadow: none;
   transition: background 0.14s, border-color 0.14s;
@@ -405,4 +504,43 @@
 }
 .employee-submit-btn:hover {
   background: #0077c5;
+}
+/* Specific selector for textarea inside the form */
+.employee-comment-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1332px;
+  margin-top: 24px;
+  
+}
+
+.employee-comment-label {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #232323;
+  
+}
+
+.employee-comment-textarea {
+  box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px 16px 16px;
+gap: 12px;
+
+width: 1332px;
+height: 90px;
+
+background: #FFFFFF;
+border: 0.5px solid #D0D5DD;
+border-radius: 6px;
+}
+
+.employee-comment-textarea::placeholder {
+  color: #000000;
 }
