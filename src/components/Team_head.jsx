@@ -50,8 +50,11 @@ const TeamHead = () => {
       <form className="team-head-form-main">
 
         {/* Initiation Type */}
-       <div className="team-head-section-label" style={{marginBottom: 8}}>Initiation Type</div>
-<div className="team-head-radio-row" style={{marginBottom: 24, gap: 28, display: 'flex', alignItems: 'center'}}>
+       {/* Initiation Type */}
+<div className="team-head-section-label" style={{marginBottom: 8}}>Initiation Type</div>
+
+{/* Wrap these radios in a div with a unique class */}
+<div className="initiation-type-group team-head-radio-row" style={{marginBottom: 24, gap: 28, display: 'flex', alignItems: 'center'}}>
   <label className="team-head-radio-label">
     <input
       type="radio"
@@ -73,6 +76,7 @@ const TeamHead = () => {
     <span className="team-head-radio-text">For My Reportee</span>
   </label>
 </div>
+
 
         {/* Employee Info */}
         <div className="team-head-section-label">Employee Information</div>
@@ -276,7 +280,7 @@ const TeamHead = () => {
           maxLength={500}
           value={comment}
           disabled
-          className="team-head-input team-head-textarea"
+          className="team-head-input team-head-comment-textarea"
         />
 
         {/* Approve/Reject Actions */}
