@@ -10,17 +10,16 @@
   z-index: 1000;
 }
 
-/* Left Section */
-.header-left-section {
+.header-left {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
 }
 
 .header-logo-container {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
 }
 
 .header-logo {
@@ -34,40 +33,55 @@
   color: #111827;
   line-height: 1.2;
 }
-
-/* Toggle Button Group */
-.header-toggle-group {
-  border-radius: 50px;
-  overflow: hidden;
+.header-toggle-container {
+  display: flex;
+  border-radius: 999px;
   background-color: #e5e7eb;
   margin-left: 12px;
+  overflow: hidden;
+  height: 48px;
+  padding: 4px;
 }
 
-.header-toggle-button {
+.header-toggle-btn {
   text-transform: none;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
-  padding: 6px 20px;
+  padding: 8px 24px;
   border: none;
-  border-radius: 50px !important;
   color: #374151;
-  flex: 1;
   white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background-color: transparent;
+  box-shadow: none;
+  outline: none;
+  margin: 0;
 }
 
-.header-toggle-button-selected {
-  background-color: #0ea5e9 !important;
-  color: white !important;
+/* Selected tab with gradient */
+.header-toggle-btn.active {
+  background: linear-gradient(90deg, #36d1dc 0%, #0ea5e9 100%);
+  color: white;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  margin: 0;
 }
 
-/* Right Section */
-.header-right-section {
+
+
+
+.header-right {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-/* Search Box */
 .header-search-container {
   position: relative;
   width: 220px;
@@ -89,14 +103,13 @@
   font-size: 14px;
 }
 
-/* Calendar */
-.header-calendar-container {
+.header-calendar {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-.header-calendar-button {
+.header-calendar-btn {
   color: #6b7280;
   padding: 4px;
   position: relative;
@@ -107,7 +120,7 @@
   color: gray;
 }
 
-.header-calendar-badge {
+.header-calendar-tick {
   position: absolute;
   top: 6px;
   right: 6px;
@@ -126,7 +139,7 @@
   color: #6b7280;
 }
 
-.header-date-picker-container {
+.header-datepicker {
   position: absolute;
   top: 100%;
   left: 0;
@@ -134,26 +147,24 @@
   margin-top: 8px;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Icon Buttons */
-.header-icon-button {
+.header-icon-btn {
   padding: 4px;
 }
 
-.header-icon {
+.header-icon-img {
   width: 22px;
   height: 22px;
 }
 
-/* Notifications */
-.header-notification-button {
+.header-notification-btn {
   color: #6b7280;
   position: relative;
 }
 
-.header-notification-badge {
+.header-notification-badge .MuiBadge-badge {
   font-size: 0.65rem;
   height: 16px;
   min-width: 16px;
@@ -161,8 +172,7 @@
   right: 4px;
 }
 
-/* Profile */
-.header-profile-container {
+.header-profile {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -188,7 +198,4 @@
 .header-profile-role {
   font-size: 12px;
   color: #6b7280;
-}
-.form-grid.two-column {
-  grid-template-columns: repeat(2, 1fr);
 }
