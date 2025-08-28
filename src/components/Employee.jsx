@@ -11,6 +11,7 @@ import noteIcon from "../assets/note.svg";
 import uploadIcon from "../assets/upload-cloud.svg";
 import pdfIcon from "../assets/pdf-icon.svg";
 import "../style/Employee.css";
+import closeIcon from "../assets/closeIcon.svg";
 
 const initialAttachment = {
   name: "Flight Ticket.pdf",
@@ -151,6 +152,27 @@ const Employee = ({ onSubmit }) => {
     if (onSubmit) onSubmit(data);
     navigate("/manager", { state: { data } });
   };
+ const VisaNote = () => {
+  const [isVisible, setIsVisible] = React.useState(true);
+
+  if (!isVisible) return null;
+
+  return (
+    <div className="employee-note-box-inline">
+      <img src={noteIcon} alt="Note" className="note-icon-topright" />
+      <button className="close-button" onClick={() => setIsVisible(false)}>
+        <img src={closeIcon} alt="Close" />
+      </button>
+      <b>Note:</b>
+      <ol>
+        <li>To enter Valid Visa details, please click on the respective column of grid and enter or select values.</li>
+        <li>If having more than one visa, press keyboard TAB key on last column after value selection to have a new row.</li>
+        <li>Select Country first and proceed for next entries in order to retain entry.</li>
+        <li><b>Press Enter or TAB key on the last column on value selection to confirm or save entry in the grid.</b></li>
+      </ol>
+    </div>
+  );
+};
 
  return (
     <div className="employee-form-bg">
@@ -191,20 +213,8 @@ const Employee = ({ onSubmit }) => {
             </select>
           </div>
 
-          {initiationType === "me" && (
-            <div className="employee-note-box-inline">
-              <img src={noteIcon} alt="Note" className="note-icon-topright" />
-              <b>Note:</b>
-              <ol>
-                <li>To enter Valid Visa details, please click on the respective column of grid and enter or select values.</li>
-                <li>If having more than one visa, press keyboard TAB key on last column after value selection to have a new row.</li>
-                <li>Select Country first and proceed for next entries in order to retain entry.</li>
-                <li>
-                  <b>Press Enter or TAB key on the last column on value selection to confirm or save entry in the grid.</b>
-                </li>
-              </ol>
-            </div>
-          )}
+          {initiationType === "me" && <VisaNote />}
+
         </div>
 
         {initiationType === "reporte" ? (
@@ -427,13 +437,14 @@ const Employee = ({ onSubmit }) => {
                     ))}
                   </div>
                 </div>
-                <div className="employee-form-sub-label mb-8">Comment (Max 500 Chars)</div>
-                <textarea
-                  maxLength={500}
-                  value={comment}
-                  onChange={(e) => setComment(e.target.value)}
-                  className="employee-input employee-textarea"
-                />
+                <div className="employee-form-sub-label mb-8">Comment (Max 500 Chars)
+                </div>
+        <textarea
+          maxLength={500}
+          value={comment}
+          disabled
+          className="employee-comment-textarea"
+        />
                 <div className="employee-submit-row">
                   <button className="employee-submit-btn" type="submit">Submit</button>
                 </div>
@@ -551,13 +562,15 @@ const Employee = ({ onSubmit }) => {
                     ))}
                   </div>
                 </div>
-                <div className="employee-form-sub-label mb-8">Comment (Max 500 Chars)</div>
-                <textarea
-                  maxLength={500}
-                  value={comment}
-                  onChange={(e) => setComment(e.target.value)}
-                  className="employee-input employee-textarea"
-                />
+                <div class="employee-comment-section">
+  <label for="employee-comment" class="employee-comment-label">Comments</label>
+  <textarea 
+    id="employee-comment"
+    class="employee-comment-textarea"
+    placeholder="Write your comment here...">
+  </textarea>
+</div>
+
                 <div className="employee-submit-row">
                   <button className="employee-submit-btn" type="submit">Submit</button>
                 </div>
