@@ -78,6 +78,53 @@
 .radio-label.active {
   color: #232323;
 }
+/* Scoped Initiation Type Radio Styles */
+.initiation-type-group .team-head-radio-label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: default;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #6c7a89;
+}
+
+.initiation-type-group .team-head-radio-input {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  cursor: default;
+  margin: 0;
+}
+
+.initiation-type-group .team-head-radio-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #29b6f6;
+  border-radius: 50%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.initiation-type-group .team-head-radio-input:checked + .team-head-radio-custom::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: #29b6f6;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+}
+
+.initiation-type-group .team-head-radio-label.disabled {
+  cursor: not-allowed;
+  color: #aaa;
+}
+
 
 .required {
   color: #e53935;
@@ -283,11 +330,29 @@
 }
 .team-head-transfer-label {
   font-weight: 700;
-  color: #616FE3;
+  color: #040404;
   font-size: 1.13rem;
 }
 .team-head-transfer-arrow {
   margin-left: auto;
   display: flex;
   align-items: center;
+}
+.team-head-comment-textarea {
+  box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px 16px 16px;
+gap: 12px;
+
+width: 1332px;
+height: 90px;
+
+background: #FFFFFF;
+border: 0.5px solid #D0D5DD;
+border-radius: 6px;
+
 }
