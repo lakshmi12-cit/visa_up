@@ -273,7 +273,7 @@
   gap: 10px;
   margin-top: 32px;
   background: #f4f7fe;
-  padding: 12px 18px;
+  padding: 5px 18px;
   border-radius: 10px;
   font-weight: 600;
   color: #616FE3;
@@ -286,11 +286,29 @@
 }
 .manager-transfer-label {
   font-weight: 700;
-  color: #616FE3;
+  color: #0e0e0e;
   font-size: 1.13rem;
 }
 .manager-transfer-arrow {
   margin-left: auto;
   display: flex;
   align-items: center;
+}
+.manager-comment-textarea {
+  box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px 16px 16px;
+gap: 12px;
+
+width: 1332px;
+height: 90px;
+
+background: #FFFFFF;
+border: 0.5px solid #D0D5DD;
+border-radius: 6px;
+
 }
