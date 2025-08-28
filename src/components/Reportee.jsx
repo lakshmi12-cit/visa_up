@@ -22,6 +22,25 @@ const Reportee = () => {
     // This is a read-only view, so no type switch
     // You may add logic if you want to support toggling between "me" and "reporte"
   };
+  const handleDownload = (file) => {
+  if (file.url) {
+    const link = document.createElement("a");
+    link.href = file.url;
+    link.download = file.name;
+    link.click();
+  } else {
+    const blob = new Blob([file.content || "Sample File Content"], {
+      type: "application/pdf",
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = file.name;
+    link.click();
+    URL.revokeObjectURL(url);
+  }
+};
+
 
   return (
     <div className="reportee-form-bg">
@@ -288,9 +307,14 @@ const Reportee = () => {
                   {file.date} &nbsp; | &nbsp; {file.time} &nbsp; | &nbsp; {file.size}
                 </div>
               </div>
-              <button className="reportee-attach-chip-download">
-                <img src={downloadIcon} alt="Download" className="reportee-download-icon" />
-              </button>
+             <button
+  className="reportee-attach-chip-download"
+  onClick={() => handleDownload(file)}
+  type="button"
+>
+  <img src={downloadIcon} alt="Download" className="reportee-download-icon" />
+</button>
+
             </div>
           ))}
         </div>
